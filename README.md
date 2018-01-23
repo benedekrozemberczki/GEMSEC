@@ -26,6 +26,34 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
 #### Input and output options
 
 ```
+  --input STR                   Input graph path.                                 Default is `data/restaurant_edges.csv`.
+  --embedding-output STR        Embeddings path.                                  Default is `output/embeddings/restaurant_embedding.csv`.
+  --cluster-mean-output STR     Cluster centers path.                             Default is `output/cluster_means/pubmed_means.csv`.
+  --log-output STR              Log path.                                         Default is `output/logs/restaurant.log`.
+  --dump-matrices BOOL          Whether the trained model should be saved.        Default is `True`.
+  --model STR                   The model type.                                   Default is `GEMSECWithRegularization`.
+```
+
+
+#### Skipgram options
+
+```
+  --input STR                   Path to the edge list csv.                Default is `data/restaurant_edges.csv`
+  --output STR                  Path to to embedding.                     Default is `emb/restaurant.out`
+  --dimensions INT              Number of embedding dimensions.           Default is 128.
+  --vertex-set-cardinality INT  Number of nodes per diffusion tree.       Default is 80.
+  --num-diffusions INT          Number of diffusion per source node.      Default is 10.
+  --window-size INT             Context size for optimization.            Default is 10.
+  --iter INT                    Number of ASGD iterations.                Default is 1.
+  --workers INT                 Number of cores.                          Default is 4.
+  --alpha FLOAT                 Initial learning rate.                    Default is 0.025.
+  --type STR                    Type of diffusion tree linearization.     Default is `eulerian`.
+```
+
+
+#### Model options
+
+```
   --input STR                   Path to the edge list csv.                Default is `data/restaurant_edges.csv`
   --output STR                  Path to to embedding.                     Default is `emb/restaurant.out`
   --dimensions INT              Number of embedding dimensions.           Default is 128.
