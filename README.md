@@ -5,10 +5,10 @@ GEMSEC is a graph embedding algorithm which learns an embedding and clustering j
 </p>
 
 This repository provides a reference implementation for GEMSEC as described in the paper:
-> Fast Sequence Based Embedding with Diffusion Graphs.
-> [Benedek Rozemberczki](http://homepages.inf.ed.ac.uk/s1668259/) and  [Rik Sarkar](https://homepages.inf.ed.ac.uk/rsarkar/).
+> GEMSEC: Graph Embedding with Self Clustering.
+> [Benedek Rozemberczki](http://homepages.inf.ed.ac.uk/s1668259/), [Benedek Rozemberczki](http://homepages.inf.ed.ac.uk/s1668259/), [Rik Sarkar](https://homepages.inf.ed.ac.uk/rsarkar/) and [Charles Sutton](https://homepages.inf.ed.ac.uk/rsarkar/) .
 > International Conference on Complex Networks, 2018.
-> http://homepages.inf.ed.ac.uk/s1668259/papers/sequence.pdf
+> http://homepages.inf.ed.ac.uk/s1668259/papers/gemsec.pdf
 
 
 ### Requirements
@@ -23,7 +23,7 @@ The code takes an input graph in a csv file. Every row indicates an edge between
 
 Learning of the embedding is handled by the `src/embedding_clustering.py` script which provides the following command line arguments.
 
-## Input and output options
+#### Input and output options
 
 ```
   --input STR                   Path to the edge list csv.                Default is `data/restaurant_edges.csv`
