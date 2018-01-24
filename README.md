@@ -34,18 +34,16 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
   --model STR                   The model type.                                   Default is `GEMSECWithRegularization`.
 ```
 
-
 #### Skipgram options
 
 ```
-  --dimensions INT                Number of dimensions.                               Cica
-  --random-walk-length INT        Length of random walk per source.                   Cica
-  --num-of-walks INT              Number of random walks per source.                  cica
-  --window-size INT               Window size for proximity statistic extraction.     Cica
-  --distortion FLOAT              Downsampling distortion.                            Cica
-  --negative-sample-number INT    Number of negative samples to draw.                 Cica
+  --dimensions INT                Number of dimensions.                               Default is 16.
+  --random-walk-length INT        Length of random walk per source.                   Default is 80.
+  --num-of-walks INT              Number of random walks per source.                  Default is 5.
+  --window-size INT               Window size for proximity statistic extraction.     Default is 5.
+  --distortion FLOAT              Downsampling distortion.                            Default is 0.75.
+  --negative-sample-number INT    Number of negative samples to draw.                 Default is 10.
 ```
-
 
 #### Model options
 
