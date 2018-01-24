@@ -48,16 +48,16 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
 #### Model options
 
 ```
-  --input STR                   Path to the edge list csv.                Default is `data/restaurant_edges.csv`
-  --output STR                  Path to to embedding.                     Default is `emb/restaurant.out`
-  --dimensions INT              Number of embedding dimensions.           Default is 128.
-  --vertex-set-cardinality INT  Number of nodes per diffusion tree.       Default is 80.
-  --num-diffusions INT          Number of diffusion per source node.      Default is 10.
-  --window-size INT             Context size for optimization.            Default is 10.
-  --iter INT                    Number of ASGD iterations.                Default is 1.
-  --workers INT                 Number of cores.                          Default is 4.
-  --alpha FLOAT                 Initial learning rate.                    Default is 0.025.
-  --type STR                    Type of diffusion tree linearization.     Default is `eulerian`.
+  --initial-learning-rate FLOAT   Initial learning rate.
+  --minimal-learning-rate FLOAT   Final learning rate. 
+  --annealing-factor FLOAT        Annealing factor for learning rate.
+  --initial-gamma FLOAT           Initial clustering weight coefficient.
+  --lambd FLOAR                   Smoothness regularization penalty.
+  --cluster-number INT            Number of clusters.
+  --overlap-weighting STR         Weight construction technique for regularization.
+  --regularization-noise FLOAT    Uniform noise max and min on the feature vector distance.
+  --regularization-norm STR       The distance metric used for calculating the smoothness regularizer.
+  --clustering-norm STR           The distance metric used for calculating the cluster distances.
 ```
 
 ### Examples
