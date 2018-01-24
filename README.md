@@ -48,16 +48,16 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
 #### Model options
 
 ```
-  --initial-learning-rate FLOAT   Initial learning rate.
-  --minimal-learning-rate FLOAT   Final learning rate. 
-  --annealing-factor FLOAT        Annealing factor for learning rate.
-  --initial-gamma FLOAT           Initial clustering weight coefficient.
-  --lambd FLOAR                   Smoothness regularization penalty.
-  --cluster-number INT            Number of clusters.
-  --overlap-weighting STR         Weight construction technique for regularization.
-  --regularization-noise FLOAT    Uniform noise max and min on the feature vector distance.
-  --regularization-norm STR       The distance metric used for calculating the smoothness regularizer.
-  --clustering-norm STR           The distance metric used for calculating the cluster distances.
+  --initial-learning-rate FLOAT   Initial learning rate.                                        Def
+  --minimal-learning-rate FLOAT   Final learning rate.                                          Def
+  --annealing-factor FLOAT        Annealing factor for learning rate.                           Def
+  --initial-gamma FLOAT           Initial clustering weight coefficient.                        Def
+  --lambd FLOAR                   Smoothness regularization penalty.                            Def
+  --cluster-number INT            Number of clusters.                                           Def
+  --overlap-weighting STR         Weight construction technique for regularization.             Def
+  --regularization-noise FLOAT    Uniform noise max and min on the feature vector distance.     Def
+  --regularization-norm STR       Metric used for the smoothness regularization.                Def
+  --clustering-norm STR           Metric used for the cluster distances.                        Def
 ```
 
 ### Examples
