@@ -48,16 +48,16 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
 #### Model options
 
 ```
-  --initial-learning-rate FLOAT   Initial learning rate.                                        Def
-  --minimal-learning-rate FLOAT   Final learning rate.                                          Def
-  --annealing-factor FLOAT        Annealing factor for learning rate.                           Def
-  --initial-gamma FLOAT           Initial clustering weight coefficient.                        Def
-  --lambd FLOAR                   Smoothness regularization penalty.                            Def
-  --cluster-number INT            Number of clusters.                                           Def
-  --overlap-weighting STR         Weight construction technique for regularization.             Def
-  --regularization-noise FLOAT    Uniform noise max and min on the feature vector distance.     Def
-  --regularization-norm STR       Metric used for the smoothness regularization.                Def
-  --clustering-norm STR           Metric used for the cluster distances.                        Def
+  --initial-learning-rate FLOAT   Initial learning rate.                                        Default is 0.001.
+  --minimal-learning-rate FLOAT   Final learning rate.                                          Default is 0.0001.
+  --annealing-factor FLOAT        Annealing factor for learning rate.                           Default is 0.99.
+  --initial-gamma FLOAT           Initial clustering weight coefficient.                        Default is 0.1.
+  --lambd FLOAR                   Smoothness regularization penalty.                            Default is 1.0
+  --cluster-number INT            Number of clusters.                                           Default is 5.
+  --overlap-weighting STR         Weight construction technique for regularization.             Default is `normalized_overlap`.
+  --regularization-noise FLOAT    Uniform noise max and min on the feature vector distance.     Default is 10**-8.
+  --regularization-norm STR       Metric used for the smoothness regularization.                Default is `euclidean`.
+  --clustering-norm STR           Metric used for the cluster distances.                        Default is `euclidean`.
 ```
 
 ### Examples
