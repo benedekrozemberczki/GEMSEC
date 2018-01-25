@@ -26,10 +26,10 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
 #### Input and output options
 
 ```
-  --input STR                   Input graph path.                                 Default is `data/restaurant_edges.csv`.
-  --embedding-output STR        Embeddings path.                                  Default is `output/embeddings/restaurant_embedding.csv`.
-  --cluster-mean-output STR     Cluster centers path.                             Default is `output/cluster_means/pubmed_means.csv`.
-  --log-output STR              Log path.                                         Default is `output/logs/restaurant.log`.
+  --input STR                   Input graph path.                                 Default is `data/politician_edges.csv`.
+  --embedding-output STR        Embeddings path.                                  Default is `output/embeddings/politician_embedding.csv`.
+  --cluster-mean-output STR     Cluster centers path.                             Default is `output/cluster_means/politician_means.csv`.
+  --log-output STR              Log path.                                         Default is `output/logs/politician.log`.
   --dump-matrices BOOL          Whether the trained model should be saved.        Default is `True`.
   --model STR                   The model type.                                   Default is `GEMSECWithRegularization`.
 ```
@@ -52,7 +52,7 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
   --minimal-learning-rate FLOAT   Final learning rate.                                          Default is 0.0001.
   --annealing-factor FLOAT        Annealing factor for learning rate.                           Default is 0.99.
   --initial-gamma FLOAT           Initial clustering weight coefficient.                        Default is 0.1.
-  --lambd FLOAR                   Smoothness regularization penalty.                            Default is 1.0
+  --lambd FLOAR                   Smoothness regularization penalty.                            Default is 0.0625.
   --cluster-number INT            Number of clusters.                                           Default is 5.
   --overlap-weighting STR         Weight construction technique for regularization.             Default is `normalized_overlap`.
   --regularization-noise FLOAT    Uniform noise max and min on the feature vector distance.     Default is 10**-8.
@@ -62,17 +62,23 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
 
 ### Examples
 
-The following commands learn a graph embedding and writes it to disk. The first column in the embedding file is the node ID.
+The following commands learn a graph embedding and cluster center and writes them to disk. The node representations are ordered by the ID.
 
-Creating an embedding of the default dataset with the default hyperparameter settings.
-
-```
-python src/diffusion_2_vec.py
-```
-Creating an embedding of an other dataset the `Facebook Politicians`.
+Creating a GEMSEC embedding of the default dataset with the default hyperparameter settings. Saving the embedding, cluster centres and the log file at the default path.
 
 ```
-python src/diffusion_2_vec.py --input data/politician_edges.csv --output output/politician.out
+python src/embedding_clustering.py
+```
+Creating a DeepWalk embedding of the default dataset with the default hyperparameter settings. Saving the embedding, cluster centres and the log file at the default path.
+
+```
+python src/embedding_clustering.py --model DW
+```
+
+Creating an embedding of an other dataset the `Facebook Companies`. Saving the output and the log in a proper place.
+
+```
+python src/diffusion_2_vec.py --input data/company_edges.csv
 ```
 
 Creating an embedding of the default dataset in 32 dimensions, 5 sequences per source node with maximal vertex set cardinality of 40.
