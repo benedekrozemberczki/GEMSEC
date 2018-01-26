@@ -75,21 +75,27 @@ Creating a DeepWalk embedding of the default dataset with the default hyperparam
 python src/embedding_clustering.py --model DW
 ```
 
-Creating an embedding of an other dataset the `Facebook Companies`. Saving the output and the log in a proper place.
+Turning off the model saving.
 
 ```
-python src/diffusion_2_vec.py --input data/company_edges.csv
+python src/embedding_clustering.py --dump-matrices False
 ```
 
-Creating an embedding of the default dataset in 32 dimensions, 5 sequences per source node with maximal vertex set cardinality of 40.
+Creating an embedding of an other dataset the `Facebook Companies`. Saving the output and the log in a custom place.
 
 ```
-python src/diffusion_2_vec.py --dimensions 32 --num-diffusions 5 --vertex-set-cardinality 40
+python src/embedding_clustering.py --input data/company_edges.csv  --embedding-output output/embeddings/company_embedding.csv --log-output output/cluster_means/company_means.csv --cluster-mean-output output/logs/company.json
+```
+
+Creating a clustered embedding of the default dataset in 32 dimensions, 20 sequences per source node with length 160 and 10 cluster centers.
+
+```
+python src/embedding_clustering.py --dimensions 32 --num-of-walks 20 --random-walk-length 160 --cluster-number 10
 ```
 
 ### Citing
 
-If you find Diff2Vec useful in your research, please consider citing the following paper:
+If you find GEMSEC useful in your research, please consider citing the following paper:
 
 >@inproceedings{rozemberczki2018fastsequence,  
   title={Fast Sequence Based Embedding with Diffusion Graphs},  
