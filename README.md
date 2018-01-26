@@ -17,7 +17,19 @@ The codebase is implemented in Python 2.7.
 
 ### Datasets
 
-The code takes an input graph in a csv file. Every row indicates an edge between two nodes separated by a comma. The first row is a header. Nodes should be indexed starting with 0. A sample graph for the `Facebook Restaurants` dataset is included in the  `data/` directory.
+The code takes an input graph in a csv file. Every row indicates an edge between two nodes separated by a comma. The first row is a header. Nodes should be indexed starting with 0. Sample graphs for the `Facebook Politicians` and `Facebook Restaurants` datasets are included in the  `data/` directory.
+
+### Logging
+
+The models are defined in a way that parameter settings and cluster quality is logged in every single epoch. Specifically we log the followings:
+
+```
+Hyperparameter settings -- we save each hyperparameter used in the experiment.
+Loss per epoch -- embedding, clustering and regularization depending on the model type.
+Cluster quality -- measured by modularity. We calculate it both for the classical and neural clusterings.
+Time needed for optimization and data generation per epoch -- measured by seconds.
+
+```
 
 ### Options
 
