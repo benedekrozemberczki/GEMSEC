@@ -24,11 +24,10 @@ The code takes an input graph in a csv file. Every row indicates an edge between
 The models are defined in a way that parameter settings and cluster quality is logged in every single epoch. Specifically we log the followings:
 
 ```
-Hyperparameter settings -- we save each hyperparameter used in the experiment.
-Loss per epoch -- embedding, clustering and regularization depending on the model type.
-Cluster quality -- measured by modularity. We calculate it both for the classical and neural clusterings.
-Time needed for optimization and data generation per epoch -- measured by seconds.
-
+1. Hyperparameter settings.     We save each hyperparameter used in the experiment.
+2. Loss per epoch.              Embedding, clustering and regularization depending on the model type.
+3. Cluster quality.             Measured by modularity. We calculate it both for the classical and neural clusterings.
+4. Runtime.                     We measure the time needed for optimization and data generation per epoch -- measured by seconds.
 ```
 
 ### Options
