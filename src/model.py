@@ -52,8 +52,7 @@ class GEMSECWithRegularization(Model):
         self.graph = graph
         self.degrees = nx.degree(self.graph).values()
         self.vocab_size = len(self.degrees)
-        self.true_step_size = step_calculator(self.args.num_of_walks*self.vocab_size, self.args.annealing_factor, self.args.minimal_learning_rate, self.args.initial_learning_rate)
-        print(self.true_step_size)
+        self.true_step_size = self.args.num_of_walks*self.vocab_size
         self.build()
 
     def _build(self):
@@ -144,21 +143,20 @@ class GEMSECWithRegularization(Model):
             #
             #-------------------------------------------------
 
-            self.learning_rate = tf.placeholder("float")
             self.gamma = tf.placeholder("float")
             self.loss = self.embedding_loss + self.gamma * self.clustering_loss + self.args.lambd*self.regularization_loss
 
     
+            self.batch = tf.Variable(0)
             self.step = tf.placeholder("float")
-            self.learning_rate_base = tf.train.exponential_decay(self.learning_rate,
-                                                                 self.step,
-                                                                 self.true_step_size,
-                                                                 self.args.annealing_factor,
-                                                                 staircase=True)
     
-            self.learning_rate_new = tf.maximum(self.learning_rate_base, self.args.minimal_learning_rate)
+            self.learning_rate_new = tf.train.polynomial_decay(self.args.initial_learning_rate,
+                                                               self.batch,
+                                                               self.true_step_size,
+                                                               self.args.minimal_learning_rate,
+                                                               self.args.annealing_factor)
     
-            self.train_op = tf.train.AdamOptimizer(self.learning_rate_new).minimize(self.loss)
+            self.train_op = tf.train.AdamOptimizer(self.learning_rate_new).minimize(self.loss, global_step = self.batch)
     
             self.init = tf.global_variables_initializer()
 
@@ -175,7 +173,6 @@ class GEMSECWithRegularization(Model):
         self.check = tf.add_check_numerics_ops()
 
     def index_generation(self, a_random_walk):
-        #small_g = self.graph.subgraph(set(list(a_random_walk)))
         edges = [(a_random_walk[i], a_random_walk[i+1])for i in range(0,len(a_random_walk)-1)]
         edge_set_1 = np.array(map(lambda x: x[0], edges))
         edge_set_2 = np.array(map(lambda x: x[1], edges))
@@ -184,7 +181,7 @@ class GEMSECWithRegularization(Model):
         
 
 
-    def feed_dict_generator(self, node, step, learning_rate, gamma):
+    def feed_dict_generator(self, node, step, gamma):
         start = time.time()
         a_random_walk = small_walk(self.graph, node, self.args.random_walk_length)
 
@@ -203,7 +200,6 @@ class GEMSECWithRegularization(Model):
 
         feed_dict = {self.train_inputs: batch_inputs,
                      self.train_labels: batch_labels,
-                     self.learning_rate: learning_rate,
                      self.gamma: gamma,
                      self.step: float(step),
                      self.edge_indices_left: index_1,
@@ -243,7 +239,7 @@ class GEMSECWithRegularization(Model):
                 for node in self.nodes:
                     self.current_step = self.current_step + 1
                     self.current_gamma = gamma_incrementer(self.current_step, self.args.initial_gamma,self.current_gamma, self.num_steps)
-                    feed_dict, data_generation_time  = self.feed_dict_generator(node, self.current_step,self.args.initial_learning_rate, self.current_gamma)
+                    feed_dict, data_generation_time  = self.feed_dict_generator(node, self.current_step, self.current_gamma)
                     generation_time = generation_time + data_generation_time
                     start = time.time()
                     _, loss_val, second, third = session.run([self.train_op , self.embedding_loss, self.clustering_loss, self.regularization_loss], feed_dict=feed_dict)
@@ -309,7 +305,7 @@ class GEMSEC(Model):
         self.graph = graph
         self.degrees = nx.degree(self.graph).values()
         self.vocab_size = len(self.degrees)
-        self.true_step_size = step_calculator(self.args.num_of_walks*self.vocab_size, self.args.annealing_factor, self.args.minimal_learning_rate, self.args.initial_learning_rate)
+        self.true_step_size = self.args.num_of_walks*self.vocab_size
         self.build()
 
     def _build(self):
@@ -375,28 +371,27 @@ class GEMSEC(Model):
             #-------------------------------------------------
             #
             #-------------------------------------------------
-    
-            self.learning_rate = tf.placeholder("float")
+
             self.gamma = tf.placeholder("float")
             self.loss = self.embedding_loss + self.gamma * self.clustering_loss
 
     
+            self.batch = tf.Variable(0)
             self.step = tf.placeholder("float")
-            self.learning_rate_base = tf.train.exponential_decay(self.learning_rate,
-                                                                 self.true_step_size,
-                                                                 self.args.annealing_step_size,
-                                                                 self.args.annealing_factor,
-                                                                 staircase=True)
     
-            self.learning_rate_new = tf.maximum(self.learning_rate_base, self.args.minimal_learning_rate)
+            self.learning_rate_new = tf.train.polynomial_decay(self.args.initial_learning_rate,
+                                                               self.batch,
+                                                               self.true_step_size,
+                                                               self.args.minimal_learning_rate,
+                                                               self.args.annealing_factor)
     
-            self.train_op = tf.train.AdamOptimizer(self.learning_rate_new).minimize(self.loss)
+            self.train_op = tf.train.AdamOptimizer(self.learning_rate_new).minimize(self.loss, global_step = self.batch)
     
             self.init = tf.global_variables_initializer()
 
 
 
-    def feed_dict_generator(self, node, step, learning_rate, gamma):
+    def feed_dict_generator(self, node, step, gamma):
         start = time.time()
         a_random_walk = small_walk(self.graph, node, self.args.random_walk_length)
 
@@ -414,7 +409,6 @@ class GEMSEC(Model):
 
         feed_dict = {self.train_inputs: batch_inputs,
                      self.train_labels: batch_labels,
-                     self.learning_rate: learning_rate,
                      self.gamma: gamma,
                      self.step: float(step)}
         end = time.time()
@@ -450,7 +444,7 @@ class GEMSEC(Model):
                 for node in self.nodes:
                     self.current_step = self.current_step + 1
                     self.current_gamma = gamma_incrementer(self.current_step, self.args.initial_gamma,self.current_gamma, self.num_steps)
-                    feed_dict, data_generation_time  = self.feed_dict_generator(node, self.current_step,self.args.initial_learning_rate, self.current_gamma)
+                    feed_dict, data_generation_time  = self.feed_dict_generator(node, self.current_step, self.current_gamma)
                     generation_time = generation_time + data_generation_time
                     start = time.time()
                     _, loss_val, second= session.run([self.train_op , self.embedding_loss, self.clustering_loss], feed_dict=feed_dict)
@@ -517,7 +511,7 @@ class DWWithRegularization(Model):
         self.graph = graph
         self.degrees = nx.degree(self.graph).values()
         self.vocab_size = len(self.degrees)
-        self.true_step_size = step_calculator(self.args.num_of_walks*self.vocab_size, self.args.annealing_factor, self.args.minimal_learning_rate, self.args.initial_learning_rate) 
+        self.true_step_size = self.args.num_of_walks*self.vocab_size
         self.build()
 
     def _build(self):
@@ -585,21 +579,19 @@ class DWWithRegularization(Model):
             self.regularization_loss = tf.reduce_mean(tf.matmul(tf.transpose(self.overlap), self.regularization_distances))
     
 
-
-            self.learning_rate = tf.placeholder("float")
             self.loss = self.embedding_loss  + self.args.lambd * self.regularization_loss
 
     
+            self.batch = tf.Variable(0)
             self.step = tf.placeholder("float")
-            self.learning_rate_base = tf.train.exponential_decay(self.learning_rate,
-                                                                 self.true_step_size,
-                                                                 self.args.annealing_step_size,
-                                                                 self.args.annealing_factor,
-                                                                 staircase=True)
     
-            self.learning_rate_new = tf.maximum(self.learning_rate_base, self.args.minimal_learning_rate)
+            self.learning_rate_new = tf.train.polynomial_decay(self.args.initial_learning_rate,
+                                                               self.batch,
+                                                               self.true_step_size,
+                                                               self.args.minimal_learning_rate,
+                                                               self.args.annealing_factor)
     
-            self.train_op = tf.train.AdamOptimizer(self.learning_rate_new).minimize(self.loss)
+            self.train_op = tf.train.AdamOptimizer(self.learning_rate_new).minimize(self.loss, global_step = self.batch)
     
             self.init = tf.global_variables_initializer()
 
@@ -624,7 +616,7 @@ class DWWithRegularization(Model):
         
 
 
-    def feed_dict_generator(self, node, step, learning_rate, gamma):
+    def feed_dict_generator(self, node, step, gamma):
         start = time.time()
         a_random_walk = small_walk(self.graph, node, self.args.random_walk_length)
 
@@ -643,7 +635,6 @@ class DWWithRegularization(Model):
 
         feed_dict = {self.train_inputs: batch_inputs,
                      self.train_labels: batch_labels,
-                     self.learning_rate: learning_rate,
                      self.step: float(step),
                      self.edge_indices_left: index_1,
                      self.edge_indices_right: index_2,
@@ -681,7 +672,7 @@ class DWWithRegularization(Model):
                 for node in self.nodes:
                     self.current_step = self.current_step + 1
                     self.current_gamma = gamma_incrementer(self.current_step, self.args.initial_gamma,self.current_gamma, self.num_steps)
-                    feed_dict, data_generation_time  = self.feed_dict_generator(node, self.current_step,self.args.initial_learning_rate, self.current_gamma)
+                    feed_dict, data_generation_time  = self.feed_dict_generator(node, self.current_step, self.current_gamma)
                     generation_time = generation_time + data_generation_time
                     start = time.time()
                     _, loss_val, second = session.run([self.train_op , self.embedding_loss, self.regularization_loss], feed_dict=feed_dict)
@@ -785,20 +776,17 @@ class DW(Model):
             #-------------------------------------------------
     
 
-            self.learning_rate = tf.placeholder("float")
             self.loss = self.embedding_loss
-
-    
+            self.batch = tf.Variable(0)
             self.step = tf.placeholder("float")
-            self.learning_rate_base = tf.train.exponential_decay(self.learning_rate,
-                                                                 self.true_step_size ,
-                                                                 self.args.annealing_step_size,
-                                                                 self.args.annealing_factor,
-                                                                 staircase=True)
     
-            self.learning_rate_new = tf.maximum(self.learning_rate_base, self.args.minimal_learning_rate)
+            self.learning_rate_new = tf.train.polynomial_decay(self.args.initial_learning_rate,
+                                                               self.batch,
+                                                               self.true_step_size,
+                                                               self.args.minimal_learning_rate,
+                                                               self.args.annealing_factor)
     
-            self.train_op = tf.train.AdamOptimizer(self.learning_rate_new).minimize(self.loss)
+            self.train_op = tf.train.AdamOptimizer(self.learning_rate_new).minimize(self.loss, global_step = self.batch)
     
             self.init = tf.global_variables_initializer()
 
@@ -812,7 +800,7 @@ class DW(Model):
         
 
 
-    def feed_dict_generator(self, node, step, learning_rate, gamma):
+    def feed_dict_generator(self, node, step, gamma):
         start = time.time()
         a_random_walk = small_walk(self.graph, node, self.args.random_walk_length)
 
@@ -830,7 +818,6 @@ class DW(Model):
 
         feed_dict = {self.train_inputs: batch_inputs,
                      self.train_labels: batch_labels,
-                     self.learning_rate: learning_rate,
                      self.step: float(step)}
         end = time.time()
         
@@ -864,7 +851,7 @@ class DW(Model):
                 for node in self.nodes:
                     self.current_step = self.current_step + 1
                     self.current_gamma = gamma_incrementer(self.current_step, self.args.initial_gamma,self.current_gamma, self.num_steps)
-                    feed_dict, data_generation_time  = self.feed_dict_generator(node, self.current_step,self.args.initial_learning_rate, self.current_gamma)
+                    feed_dict, data_generation_time  = self.feed_dict_generator(node, self.current_step,self.current_gamma)
                     generation_time = generation_time + data_generation_time
                     start = time.time()
                     _, loss_val = session.run([self.train_op , self.embedding_loss], feed_dict=feed_dict)
