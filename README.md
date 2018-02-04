@@ -67,8 +67,6 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
   --cluster-number INT            Number of clusters.                                           Default is 5.
   --overlap-weighting STR         Weight construction technique for regularization.             Default is `normalized_overlap`.
   --regularization-noise FLOAT    Uniform noise max and min on the feature vector distance.     Default is 10**-8.
-  --regularization-norm STR       Metric used for the smoothness regularization.                Default is `euclidean`.
-  --clustering-norm STR           Metric used for the cluster distances.                        Default is `euclidean`.
 ```
 
 ### Examples
