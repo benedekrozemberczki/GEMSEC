@@ -41,6 +41,7 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
   --embedding-output STR        Embeddings path.                                  Default is `output/embeddings/politician_embedding.csv`.
   --cluster-mean-output STR     Cluster centers path.                             Default is `output/cluster_means/politician_means.csv`.
   --log-output STR              Log path.                                         Default is `output/logs/politician.log`.
+  --assignment-output STR       Node-cluster assignment dictionary path.          Default is `output/assignments/politician.json`.
   --dump-matrices BOOL          Whether the trained model should be saved.        Default is `True`.
   --model STR                   The model type.                                   Default is `GEMSECWithRegularization`.
 ```
