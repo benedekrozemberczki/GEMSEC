@@ -14,6 +14,16 @@ This repository provides a reference implementation for GEMSEC as described in t
 ### Requirements
 
 The codebase is implemented in Python 2.7.
+package versions
+```
+networkx==1.11
+tqdm==4.19.5
+numpy==1.13.3
+pandas==0.20.3
+tensorflow-gpu==1.3.0
+jsonschema==2.6.0
+texttable==1.2.1
+```
 
 ### Datasets
 
