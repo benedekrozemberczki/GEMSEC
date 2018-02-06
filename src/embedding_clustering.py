@@ -1,6 +1,6 @@
-from helper import parameter_parser, graph_reader
+from parser import parameter_parser
+from print_and_read import graph_reader
 from model import GEMSECWithRegularization, GEMSEC, DWWithRegularization, DW
-import networkx as nx
 
 def create_and_run_model(args):
     
@@ -14,7 +14,6 @@ def create_and_run_model(args):
     else:
         model = DW(args, graph)
     model.train()
-    model.initiate_dump()
 
 if __name__ == "__main__":
     args = parameter_parser()
