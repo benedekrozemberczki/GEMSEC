@@ -26,8 +26,10 @@ def min_norm(g, node_1, node_2):
 
 def overlap_generator(metric, graph):
     edges = nx.edges(graph)
-    edges = edges + map(lambda x: (x[1], x[0]), edges)
-    return {edge: metric(graph, edge[0], edge[1]) for edge in tqdm(edges)}
+    weights = {edge: metric(graph, edge[0], edge[1]) for edge in tqdm(edges)}
+    weights_prime = {(edge[1],edge[0]): value for edge, value in tqdm(weights.iteritems())}
+    weights.update(weights_prime)
+    return weights
 
 def index_generation(weights, a_random_walk):
     edges = [(a_random_walk[i], a_random_walk[i+1]) for i in range(0,len(a_random_walk)-1)]
