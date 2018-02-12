@@ -14,6 +14,9 @@ from calculation_helper import neural_modularity_calculator, classical_modularit
 from print_and_read import json_dumper, log_setup, initiate_dump_gemsec, initiate_dump_dw, tab_printer, epoch_printer, log_updater
 
 class Model(object):
+    """
+    Abstract model class.
+    """    
     def __init__(self, **kwargs):
         allowed_kwargs = {'name', 'logging'}
         for kwarg in kwargs.keys():
