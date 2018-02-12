@@ -411,6 +411,9 @@ class GEMSEC(Model):
         initiate_dump_gemsec(self.log, assignments, self.args, self.final_embeddings, self.c_means)
 
 class DWWithRegularization(Model):
+    """
+    Regularized DeepWalk class.
+    """    
     def __init__(self, args, graph, **kwargs):
         super(DWWithRegularization, self).__init__(**kwargs)
 
@@ -427,6 +430,9 @@ class DWWithRegularization(Model):
         self.build()
 
     def _build(self):
+        """
+        Method to create the computational graph.
+        """        
         self.computation_graph = tf.Graph()
         with self.computation_graph.as_default():
 
@@ -524,7 +530,9 @@ class DWWithRegularization(Model):
         print(" ")
 
     def feed_dict_generator(self, a_random_walk, step, gamma):
-
+        """
+        Method to generate features, left and right handside matrices, proper time index and overlap vectors.
+        """
         index_1, index_2, overlaps = index_generation(self.weights, a_random_walk)
 
         batch_inputs = batch_input_generator(a_random_walk, self.args.random_walk_length, self.args.window_size)
@@ -542,7 +550,9 @@ class DWWithRegularization(Model):
         return feed_dict
 
     def train(self):
- 
+        """
+        Method for training the embedding.
+        """ 
         self.current_step = 0
         self.current_gamma = self.args.initial_gamma
         self.log = log_setup(self.args)
@@ -581,6 +591,9 @@ class DWWithRegularization(Model):
         initiate_dump_dw(self.log, assignments, self.args, self.final_embeddings)
 
 class DW(Model):
+    """
+    DeepWalk class.
+    """
     def __init__(self, args, graph, **kwargs):
         super(DW, self).__init__(**kwargs)
 
@@ -597,6 +610,9 @@ class DW(Model):
         self.build()
 
     def _build(self):
+        """
+        Method to create the computational graph.
+        """        
         self.computation_graph = tf.Graph()
         with self.computation_graph.as_default():
 
@@ -664,7 +680,9 @@ class DW(Model):
 
 
     def feed_dict_generator(self, a_random_walk, step, gamma):
-
+        """
+        Method to generate features and proper time index.
+        """
         batch_inputs = batch_input_generator(a_random_walk, self.args.random_walk_length, self.args.window_size)
 
         batch_labels = batch_label_generator(a_random_walk, self.args.random_walk_length, self.args.window_size)
@@ -677,7 +695,9 @@ class DW(Model):
         return feed_dict
 
     def train(self):
- 
+        """
+        Method for training the embedding.
+        """ 
         self.current_step = 0
         self.current_gamma = self.args.initial_gamma
         self.log = log_setup(self.args)
