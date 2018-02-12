@@ -10,9 +10,7 @@ def parameter_parser():
     parser = argparse.ArgumentParser(description = "Run GEMSEC.")
 
     #------------------------------------------------------------------
-    #
     # Input and output file parameters.
-    # 
     #------------------------------------------------------------------
 
     parser.add_argument('--input',
@@ -51,9 +49,7 @@ def parameter_parser():
 	                help = 'The model type.')
 
     #------------------------------------------------------------------
-    #
     # Skipgram parameters.
-    # 
     #------------------------------------------------------------------
 
     parser.add_argument('--dimensions',
@@ -64,7 +60,7 @@ def parameter_parser():
     parser.add_argument('--random-walk-length',
                         type = int,
                         default = 80,
-	                help = 'Length of random walk per source. Default is 40.')
+	                help = 'Length of random walk per source. Default is 80.')
 
     parser.add_argument('--num-of-walks',
                         type = int,
@@ -87,25 +83,23 @@ def parameter_parser():
 	                help = 'Number of negative samples to draw. Default is 10.')
 
     #------------------------------------------------------------------
-    #
     # Optimization parameters.
-    # 
     #------------------------------------------------------------------
 
     parser.add_argument('--initial-learning-rate',
                         type = float,
                         default = 0.01,
-	                help = 'Initial learning rate. Default is 0.001.')
+	                help = 'Initial learning rate. Default is 0.01.')
 
     parser.add_argument('--minimal-learning-rate',
                         type = float,
                         default = 0.001,
-	                help = 'Minimal learning rate. Default is 0.0001.')
+	                help = 'Minimal learning rate. Default is 0.001.')
 
     parser.add_argument('--annealing-factor',
                         type = float,
                         default = 1,
-	                help = 'Annealing factor. Default is 0.999.')
+	                help = 'Annealing factor. Default is 1.0.')
 
     parser.add_argument('--initial-gamma',
                         type = float,
@@ -115,12 +109,12 @@ def parameter_parser():
     parser.add_argument('--lambd',
                         type = float,
                         default = 2.0**-4,
-	                help = 'Smoothness regularization penalty. Default is 1.0.')
+	                help = 'Smoothness regularization penalty. Default is 0.0625.')
 
     parser.add_argument('--cluster-number',
                         type = int,
                         default = 20,
-	                help = 'Number of clusters. Default is 5.')
+	                help = 'Number of clusters. Default is 20.')
 
     parser.add_argument('--overlap-weighting',
                         nargs = '?',
@@ -133,4 +127,3 @@ def parameter_parser():
 	                help = 'Uniform noise max and min on the feature vector distance.')
     
     return parser.parse_args()
-
