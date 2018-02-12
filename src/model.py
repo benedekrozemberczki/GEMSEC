@@ -51,6 +51,9 @@ class Model(object):
         pass
 
 class GEMSECWithRegularization(Model):
+    """
+    Regularized GEMSEC class.
+    """
     def __init__(self, args, graph, **kwargs):
         super(GEMSECWithRegularization, self).__init__(**kwargs)
 
@@ -67,6 +70,9 @@ class GEMSECWithRegularization(Model):
         self.build()
 
     def _build(self):
+        """
+        Method to create the computational graph.
+        """        
         self.computation_graph = tf.Graph()
         with self.computation_graph.as_default():
 
@@ -179,7 +185,9 @@ class GEMSECWithRegularization(Model):
         print(" ")
 
     def feed_dict_generator(self, a_random_walk, step, gamma):
-
+        """
+        Method to generate random walk features, left and right handside matrices, proper time index and overlap vector.
+        """
         index_1, index_2, overlaps = index_generation(self.weights, a_random_walk)
 
         batch_inputs = batch_input_generator(a_random_walk, self.args.random_walk_length, self.args.window_size)
@@ -197,7 +205,9 @@ class GEMSECWithRegularization(Model):
         return feed_dict
 
     def train(self):
- 
+        """
+        Method for training the embedding.
+        """ 
         self.current_step = 0
         self.current_gamma = self.args.initial_gamma
         self.log = log_setup(self.args)
@@ -237,6 +247,9 @@ class GEMSECWithRegularization(Model):
         initiate_dump_gemsec(self.log, assignments, self.args, self.final_embeddings, self.c_means)
 
 class GEMSEC(Model):
+    """
+    Method to create the computational graph.
+    """       
     def __init__(self, args, graph, **kwargs):
         super(GEMSEC, self).__init__(**kwargs)
 
@@ -253,6 +266,9 @@ class GEMSEC(Model):
         self.build()
 
     def _build(self):
+        """
+        Method to create the computational graph.
+        """        
         self.computation_graph = tf.Graph()
         with self.computation_graph.as_default():
 
@@ -338,7 +354,9 @@ class GEMSEC(Model):
 
 
     def feed_dict_generator(self, a_random_walk, step, gamma):
-
+        """
+        Method to generate features and proper time index.
+        """
         batch_inputs = batch_input_generator(a_random_walk, self.args.random_walk_length, self.args.window_size)
 
         batch_labels = batch_label_generator(a_random_walk, self.args.random_walk_length, self.args.window_size)
@@ -351,7 +369,9 @@ class GEMSEC(Model):
         return feed_dict
 
     def train(self):
- 
+        """
+        Method for training the embedding.
+        """ 
         self.current_step = 0
         self.current_gamma = self.args.initial_gamma
         self.log = log_setup(self.args)
