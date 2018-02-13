@@ -7,8 +7,8 @@ GEMSEC is a graph embedding algorithm which learns an embedding and clustering j
 This repository provides a reference implementation for GEMSEC as described in the paper:
 > GEMSEC: Graph Embedding with Self Clustering.
 > [Benedek Rozemberczki](http://homepages.inf.ed.ac.uk/s1668259/), [Ryan Davies](https://www.inf.ed.ac.uk/people/students/Ryan_Davies.html), [Rik Sarkar](https://homepages.inf.ed.ac.uk/rsarkar/) and [Charles Sutton](http://homepages.inf.ed.ac.uk/csutton/) .
-> International Conference on Complex Networks, 2018.
-> http://homepages.inf.ed.ac.uk/s1668259/papers/gemsec.pdf
+> arXiv, 2018.
+>https://arxiv.org/abs/1802.03997
 
 
 ### Requirements
@@ -117,9 +117,8 @@ python src/embedding_clustering.py --dimensions 32 --num-of-walks 20 --random-wa
 
 If you find GEMSEC useful in your research, please consider citing the following paper:
 
->@misc{1802.03997,
-Author = {Benedek Rozemberczki and Ryan Davies and Rik Sarkar and Charles Sutton},
-Title = {GEMSEC: Graph Embedding with Self Clustering},
-Year = {2018},
-Eprint = {arXiv:1802.03997},
-}
+>@misc{1802.03997,    
+  author = {Benedek Rozemberczki and Ryan Davies and Rik Sarkar and Charles Sutton},    
+  title = {GEMSEC: Graph Embedding with Self Clustering},   
+  year = {2018},    
+  eprint = {arXiv:1802.03997}}
