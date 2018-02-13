@@ -117,8 +117,9 @@ python src/embedding_clustering.py --dimensions 32 --num-of-walks 20 --random-wa
 
 If you find GEMSEC useful in your research, please consider citing the following paper:
 
->@inproceedings{rozemberczki2018fastsequence,  
-  title={Fast Sequence Based Embedding with Diffusion Graphs},  
-  author={Rozemberczki, Benedek and Sarkar, Rik},  
-  booktitle={International Conference on Complex Networks},  
-  year={2018}}
+>@misc{1802.03997,
+Author = {Benedek Rozemberczki and Ryan Davies and Rik Sarkar and Charles Sutton},
+Title = {GEMSEC: Graph Embedding with Self Clustering},
+Year = {2018},
+Eprint = {arXiv:1802.03997},
+}
