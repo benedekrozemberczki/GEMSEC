@@ -124,7 +124,6 @@ class GEMSECWithRegularization(Model):
             # Defining the cluster means and calculcating the distances.
             #------------------------------------------------------------
     
-    
             self.cluster_means = tf.Variable(tf.random_uniform([self.args.cluster_number, self.args.dimensions],
                                             -0.1/self.args.dimensions, 0.1/self.args.dimensions))
            
