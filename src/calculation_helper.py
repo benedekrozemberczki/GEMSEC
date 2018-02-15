@@ -37,7 +37,7 @@ def min_norm(g, node_1, node_2):
     return float(inter)/float(min_norm)
 
 def overlap_generator(metric, graph):
-   """
+    """
     Function to generate weight for all of the edges.
     """    
     edges = nx.edges(graph)
