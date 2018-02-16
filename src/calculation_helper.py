@@ -36,14 +36,26 @@ def min_norm(g, node_1, node_2):
     min_norm = min(len(set(nx.neighbors(g, node_1))), len(set(nx.neighbors(g, node_2))))
     return float(inter)/float(min_norm)
 
-def overlap_generator(metric, graph):
+def overlap_generator(args, graph):
     """
     Function to generate weight for all of the edges.
-    """    
+    """
+    if args.overlap_weighting == "normalized_overlap":
+        overlap_weighter = normalized_overlap
+    elif args.overlap_weighting == "overlap":
+        overlap_weighter = overlap
+    elif args.overlap_weighting == "min_norm":
+        overlap_weighter = min_norm
+    else:
+        overlap_weighter = unit
+    print(" ")
+    print("Weight calculation started.")
+    print(" ")
     edges = nx.edges(graph)
-    weights = {edge: metric(graph, edge[0], edge[1]) for edge in tqdm(edges)}
-    weights_prime = {(edge[1],edge[0]): value for edge, value in tqdm(weights.iteritems())}
+    weights = {edge: overlap_weighter(graph, edge[0], edge[1]) for edge in tqdm(edges)}
+    weights_prime = {(edge[1],edge[0]): value for edge, value in weights.iteritems()}
     weights.update(weights_prime)
+    print(" ")
     return weights
 
 def index_generation(weights, a_random_walk):
