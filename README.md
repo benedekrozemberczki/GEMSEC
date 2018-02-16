@@ -92,7 +92,7 @@ python src/embedding_clustering.py
 Creating a DeepWalk embedding of the default dataset with the default hyperparameter settings. Saving the embedding, cluster centres and the log file at the default path.
 
 ```
-python src/embedding_clustering.py --model DW
+python src/embedding_clustering.py --model DeepWalk
 ```
 
 Turning off the model saving.
