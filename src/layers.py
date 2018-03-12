@@ -97,7 +97,7 @@ class Regularization:
         """
         self.left_features = tf.nn.embedding_lookup(Walker.embedding_partial, self.edge_indices_left, max_norm = 1)
         self.right_features = tf.nn.embedding_lookup(Walker.embedding_partial, self.edge_indices_right, max_norm = 1)
-        self.regularization_differences = self.left_features - self.right_features + np.random.uniform(self.args.regularization_noise,self.args.regularization_noise, (self.args.random_walk_length-1, self.args.dimensions))
+        self.regularization_differences = self.left_features - self.right_features + np.random.uniform(-self.args.regularization_noise,self.args.regularization_noise, (self.args.random_walk_length-1, self.args.dimensions))
         self.regularization_distances = tf.norm(self.regularization_differences, ord = 2,axis=1)
         self.regularization_distances = tf.reshape(self.regularization_distances, [ -1, 1])
         self.regularization_loss = tf.reduce_mean(tf.matmul(tf.transpose(self.overlap), self.regularization_distances))
