@@ -118,7 +118,8 @@ python src/embedding_clustering.py --dimensions 32 --num-of-walks 20 --random-wa
 If you find GEMSEC useful in your research, please consider citing the following paper:
 
 >@misc{1802.03997,    
-  author = {Benedek Rozemberczki and Ryan Davies and Rik Sarkar and Charles Sutton},    
-  title = {GEMSEC: Graph Embedding with Self Clustering},   
-  year = {2018},    
-  eprint = {arXiv:1802.03997}}
+       author = {Benedek Rozemberczki and Ryan Davies and Rik Sarkar and Charles Sutton},    
+       title = {GEMSEC: Graph Embedding with Self Clustering},   
+       year = {2018},    
+       eprint = {arXiv:1802.03997}
+       }
