@@ -15,7 +15,7 @@ def parameter_parser():
 
     parser.add_argument('--input',
                         nargs = '?',
-                        default = './data/politician_edges.csv',
+                        default = './data/tvshow_edges.csv',
 	                help = 'Input graph path.')
 
     parser.add_argument('--embedding-output',
@@ -47,6 +47,26 @@ def parameter_parser():
                         nargs = '?',
                         default = 'GEMSECWithRegularization',
 	                help = 'The model type.')
+
+    #------------------------------------------------------------------
+    # RandomWalk parameters.
+    #------------------------------------------------------------------
+
+    parser.add_argument('--P',
+                        type = float,
+                        default = 1,
+	                help = 'Return hyperparameter. Default is 1.')
+
+    parser.add_argument('--Q',
+                        type = float,
+                        default = 1,
+	                help = 'In-out hyperparameter. Default is 1.')
+
+    parser.add_argument('--walker',
+                        nargs = '?',
+                        default = 'first',
+	                help = 'Random walker order. Default is first.')
+
 
     #------------------------------------------------------------------
     # Skipgram parameters.
