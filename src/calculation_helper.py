@@ -224,7 +224,7 @@ class SecondOrderRandomWalker:
             for node in tqdm(nodes):
                 walks.append(self.node2vec_walk(walk_length=walk_length, start_node=node))
 
-    return walks, self.count_frequency_values(walks)
+        return walks, self.count_frequency_values(walks)
 
     def get_alias_edge(self, src, dst):
         """
