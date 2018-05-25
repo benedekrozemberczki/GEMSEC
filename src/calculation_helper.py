@@ -299,15 +299,15 @@ def alias_setup(probs):
         larger.append(kk)
 
     while len(smaller) > 0 and len(larger) > 0:
-    small = smaller.pop()
-    large = larger.pop()
+        small = smaller.pop()
+        large = larger.pop()
 
-    J[small] = large
-    q[large] = q[large] + q[small] - 1.0
-    if q[large] < 1.0:
-        smaller.append(large)
-    else:
-        larger.append(large)
+        J[small] = large
+        q[large] = q[large] + q[small] - 1.0
+        if q[large] < 1.0:
+            smaller.append(large)
+        else:
+            larger.append(large)
 
     return J, q
 
