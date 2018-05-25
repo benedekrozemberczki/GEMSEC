@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 from layers import DeepWalker, Clustering, Regularization
 
-from calculation_helper import gamma_incrementer, RandomWalker, index_generation, batch_input_generator, batch_label_generator
+from calculation_helper import gamma_incrementer, RandomWalker,SecondOrderRandomWalker, index_generation, batch_input_generator, batch_label_generator
 from calculation_helper import overlap_generator
 from calculation_helper import neural_modularity_calculator, classical_modularity_calculator
 from print_and_read import json_dumper, log_setup, initiate_dump_gemsec, initiate_dump_dw, tab_printer, epoch_printer, log_updater
@@ -27,8 +27,13 @@ class Model(object):
         """
         self.args = args
         self.graph = graph
-        self.walker = RandomWalker(self.graph, nx.nodes(graph), self.args.num_of_walks, self.args.random_walk_length)
-        self.degrees, self.walks = self.walker.do_walks()
+        if self.args.walker == "first":
+            self.walker = RandomWalker(self.graph, nx.nodes(graph), self.args.num_of_walks, self.args.random_walk_length)
+            self.degrees, self.walks = self.walker.do_walks()
+        else:
+            self.walker = SecondOrderRandomWalker(self.graph, False, self.args.P, self.args.Q)
+            self.walker.preprocess_transition_probs()
+            self.walks, self.degrees = self.walker.simulate_walks(self.args.num_of_walks, self.args.random_walk_length)
         self.nodes = self.graph.nodes()
         del self.walker
         self.vocab_size = len(self.degrees)
