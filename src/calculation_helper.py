@@ -202,7 +202,7 @@ class SecondOrderRandomWalker:
 
     def count_frequency_values(self, walks):
         """ 
-           Calculate the co-occurence frequencies.
+        Calculate the co-occurence frequencies.
         """
         raw_counts = [node for walk in walks for node in walk]
         counts = Counter(raw_counts)
@@ -210,42 +210,42 @@ class SecondOrderRandomWalker:
         return self.degrees 
 
     def simulate_walks(self, num_walks, walk_length):
-    '''
+        """
         Repeatedly simulate random walks from each node.
-    '''
-    G = self.G
-    walks = []
-    nodes = list(G.nodes())
-    for walk_iter in range(num_walks):
+        """
+        G = self.G
+        walks = []
+        nodes = list(G.nodes())
+        for walk_iter in range(num_walks):
             print(" ")
             print("Random walk series " + str(walk_iter+1) + ". initiated.")
             print(" ")
-        random.shuffle(nodes)
-        for node in tqdm(nodes):
-        walks.append(self.node2vec_walk(walk_length=walk_length, start_node=node))
+            random.shuffle(nodes)
+            for node in tqdm(nodes):
+                walks.append(self.node2vec_walk(walk_length=walk_length, start_node=node))
 
     return walks, self.count_frequency_values(walks)
 
     def get_alias_edge(self, src, dst):
-        '''
-    Get the alias edge setup lists for a given edge.
-    '''
-    G = self.G
-    p = self.p
-    q = self.q
+        """
+        Get the alias edge setup lists for a given edge.
+        """
+        G = self.G
+        p = self.p
+        q = self.q
 
-    unnormalized_probs = []
-    for dst_nbr in sorted(G.neighbors(dst)):
-        if dst_nbr == src:
-            unnormalized_probs.append(G[dst][dst_nbr]['weight']/p)
-        elif G.has_edge(dst_nbr, src):
-        unnormalized_probs.append(G[dst][dst_nbr]['weight'])
-        else:
-        unnormalized_probs.append(G[dst][dst_nbr]['weight']/q)
-    norm_const = sum(unnormalized_probs)
-    normalized_probs =  [float(u_prob)/norm_const for u_prob in unnormalized_probs]
+        unnormalized_probs = []
+        for dst_nbr in sorted(G.neighbors(dst)):
+            if dst_nbr == src:
+                unnormalized_probs.append(G[dst][dst_nbr]['weight']/p)
+            elif G.has_edge(dst_nbr, src):
+                unnormalized_probs.append(G[dst][dst_nbr]['weight'])
+            else:
+                unnormalized_probs.append(G[dst][dst_nbr]['weight']/q)
+        norm_const = sum(unnormalized_probs)
+        normalized_probs =  [float(u_prob)/norm_const for u_prob in unnormalized_probs]
 
-    return alias_setup(normalized_probs)
+        return alias_setup(normalized_probs)
 
     def preprocess_transition_probs(self):
         """
