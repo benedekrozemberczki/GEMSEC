@@ -56,6 +56,15 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
   --model STR                   The model type.                                   Default is `GEMSECWithRegularization`.
 ```
 
+
+#### Random walk options
+
+```
+  --walker STR                  Random walker order (first/second).               Default is `first`.
+  --P FLOAT                     Return hyperparameter.                            Default is 1.0
+  --Q FLOAT                     In-out hyperparameter.                            Default is 1.0.
+```
+
 #### Skipgram options
 
 ```
