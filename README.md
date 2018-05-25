@@ -61,8 +61,8 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
 
 ```
   --walker STR                  Random walker order (first/second).               Default is `first`.
-  --P FLOAT                     Return hyperparameter.                            Default is 1.0
-  --Q FLOAT                     In-out hyperparameter.                            Default is 1.0.
+  --P FLOAT                     Return hyperparameter for second-order walk.      Default is 1.0
+  --Q FLOAT                     In-out hyperparameter for second-order walk.      Default is 1.0.
 ```
 
 #### Skipgram options
