@@ -15,7 +15,7 @@ def parameter_parser():
 
     parser.add_argument('--input',
                         nargs = '?',
-                        default = './data/tvshow_edges.csv',
+                        default = './data/politician_edges.csv',
 	                help = 'Input graph path.')
 
     parser.add_argument('--embedding-output',
