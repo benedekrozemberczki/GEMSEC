@@ -23,6 +23,7 @@ pandas            0.20.3
 tensorflow-gpu    1.3.0
 jsonschema        2.6.0
 texttable         1.2.1
+python-louvain
 ```
 
 ### Datasets
