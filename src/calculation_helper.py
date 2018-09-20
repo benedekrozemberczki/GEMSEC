@@ -10,6 +10,9 @@ from sklearn.cluster import KMeans
 def normalized_overlap(g, node_1, node_2):
     """
     Function to calculate the normalized neighborhood overlap.
+    :param g: NX graph.
+    :param node_1: Node 1. of a pair.
+    :param node_2: Node 2. of a pair.
     """    
     inter = len(set(nx.neighbors(g, node_1)).intersection(set(nx.neighbors(g, node_2))))
     unio = len(set(nx.neighbors(g, node_1)).union(set(nx.neighbors(g, node_2))))
@@ -18,6 +21,9 @@ def normalized_overlap(g, node_1, node_2):
 def overlap(g, node_1, node_2):
     """
     Function to calculate the neighborhood overlap.
+    :param g: NX graph.
+    :param node_1: Node 1. of a pair.
+    :param node_2: Node 2. of a pair.    
     """    
     inter = len(set(nx.neighbors(g, node_1)).intersection(set(nx.neighbors(g, node_2))))
     return float(inter)
@@ -25,12 +31,18 @@ def overlap(g, node_1, node_2):
 def unit(g, node_1, node_2):
     """
     Function to calculate the 'unit' weight.
+    :param g: NX graph.
+    :param node_1: Node 1. of a pair.
+    :param node_2: Node 2. of a pair.    
     """    
     return 1
 
 def min_norm(g, node_1, node_2):
     """
     Function to calculate the minimum normalized neighborhood overlap.
+    :param g: NX graph.
+    :param node_1: Node 1. of a pair.
+    :param node_2: Node 2. of a pair.
     """    
     inter = len(set(nx.neighbors(g, node_1)).intersection(set(nx.neighbors(g, node_2))))
     min_norm = min(len(set(nx.neighbors(g, node_1))), len(set(nx.neighbors(g, node_2))))
