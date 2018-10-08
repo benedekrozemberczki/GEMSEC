@@ -95,14 +95,14 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
 #### Model options
 
 ```
-  --initial-learning-rate FLOAT   Initial learning rate.                                        Default is 0.001.
-  --minimal-learning-rate FLOAT   Final learning rate.                                          Default is 0.0001.
-  --annealing-factor FLOAT        Annealing factor for learning rate.                           Default is 1.0.
-  --initial-gamma FLOAT           Initial clustering weight coefficient.                        Default is 0.1.
-  --lambd FLOAR                   Smoothness regularization penalty.                            Default is 0.0625.
-  --cluster-number INT            Number of clusters.                                           Default is 20.
-  --overlap-weighting STR         Weight construction technique for regularization.             Default is `normalized_overlap`.
-  --regularization-noise FLOAT    Uniform noise max and min on the feature vector distance.     Default is 10**-8.
+  --initial-learning-rate   FLOAT    Initial learning rate.                                        Default is 0.001.
+  --minimal-learning-rate   FLOAT    Final learning rate.                                          Default is 0.0001.
+  --annealing-factor        FLOAT    Annealing factor for learning rate.                           Default is 1.0.
+  --initial-gamma           FLOAT    Initial clustering weight coefficient.                        Default is 0.1.
+  --lambd                   FLOAT    Smoothness regularization penalty.                            Default is 0.0625.
+  --cluster-number          INT      Number of clusters.                                           Default is 20.
+  --overlap-weighting       STR      Weight construction technique for regularization.             Default is `normalized_overlap`.
+  --regularization-noise    FLOAT    Uniform noise max and min on the feature vector distance.     Default is 10**-8.
 ```
 
 ### Examples
