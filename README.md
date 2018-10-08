@@ -63,33 +63,33 @@ Learning of the embedding is handled by the `src/embedding_clustering.py` script
 #### Input and output options
 
 ```
-  --input STR                   Input graph path.                                 Default is `data/politician_edges.csv`.
-  --embedding-output STR        Embeddings path.                                  Default is `output/embeddings/politician_embedding.csv`.
-  --cluster-mean-output STR     Cluster centers path.                             Default is `output/cluster_means/politician_means.csv`.
-  --log-output STR              Log path.                                         Default is `output/logs/politician.log`.
-  --assignment-output STR       Node-cluster assignment dictionary path.          Default is `output/assignments/politician.json`.
-  --dump-matrices BOOL          Whether the trained model should be saved.        Default is `True`.
-  --model STR                   The model type.                                   Default is `GEMSECWithRegularization`.
+  --input                STR      Input graph path.                               Default is `data/politician_edges.csv`.
+  --embedding-output     STR      Embeddings path.                                Default is `output/embeddings/politician_embedding.csv`.
+  --cluster-mean-output  STR      Cluster centers path.                           Default is `output/cluster_means/politician_means.csv`.
+  --log-output           STR      Log path.                                       Default is `output/logs/politician.log`.
+  --assignment-output    STR      Node-cluster assignment dictionary path.        Default is `output/assignments/politician.json`.
+  --dump-matrices        BOOL     Whether the trained model should be saved.      Default is `True`.
+  --model                STR      The model type.                                 Default is `GEMSECWithRegularization`.
 ```
 
 
 #### Random walk options
 
 ```
-  --walker STR                  Random walker order (first/second).               Default is `first`.
-  --P FLOAT                     Return hyperparameter for second-order walk.      Default is 1.0
-  --Q FLOAT                     In-out hyperparameter for second-order walk.      Default is 1.0.
+  --walker   STR         Random walker order (first/second).               Default is `first`.
+  --P        FLOAT       Return hyperparameter for second-order walk.      Default is 1.0
+  --Q        FLOAT       In-out hyperparameter for second-order walk.      Default is 1.0.
 ```
 
 #### Skipgram options
 
 ```
-  --dimensions INT                Number of dimensions.                               Default is 16.
-  --random-walk-length INT        Length of random walk per source.                   Default is 80.
-  --num-of-walks INT              Number of random walks per source.                  Default is 5.
-  --window-size INT               Window size for proximity statistic extraction.     Default is 5.
-  --distortion FLOAT              Downsampling distortion.                            Default is 0.75.
-  --negative-sample-number INT    Number of negative samples to draw.                 Default is 10.
+  --dimensions               INT        Number of dimensions.                               Default is 16.
+  --random-walk-length       INT        Length of random walk per source.                   Default is 80.
+  --num-of-walks             INT        Number of random walks per source.                  Default is 5.
+  --window-size              INT        Window size for proximity statistic extraction.     Default is 5.
+  --distortion               FLOAT      Downsampling distortion.                            Default is 0.75.
+  --negative-sample-number   INT        Number of negative samples to draw.                 Default is 10.
 ```
 
 #### Model options
