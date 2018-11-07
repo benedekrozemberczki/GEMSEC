@@ -15,10 +15,15 @@ This repository provides a reference implementation for GEMSEC as described in t
 > arXiv, 2018.
 >https://arxiv.org/abs/1802.03997
 
+### Table of Contents
+
 1. [Citing](#citing)  
-2. [Spectral and Statistical Fingerprints](#spectral-and-statistical-fingerprints)
-3. [Deep Learning](#deep-learning)  
-4. [Graph Kernels](#graph-kernels)  
+2. [Requirements](#requirements)
+3. [Datasets](#datasets)  
+4. [Logging](#logging)  
+5. [Options](#options) 
+6. [Examples](#examples)  
+7. [Related Papers](#related-papers)  
 
 ### Citing
 
@@ -143,6 +148,6 @@ Creating a clustered embedding of the default dataset in 32 dimensions, 20 seque
 python src/embedding_clustering.py --dimensions 32 --num-of-walks 20 --random-walk-length 160 --cluster-number 10
 ```
 
-### Papers that use the GEMSEC datasets
+### Related papers
 
 
