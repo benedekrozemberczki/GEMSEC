@@ -15,6 +15,11 @@ This repository provides a reference implementation for GEMSEC as described in t
 > arXiv, 2018.
 >https://arxiv.org/abs/1802.03997
 
+1. [Citing](#citing)  
+2. [Spectral and Statistical Fingerprints](#spectral-and-statistical-fingerprints)
+3. [Deep Learning](#deep-learning)  
+4. [Graph Kernels](#graph-kernels)  
+
 ### Citing
 
 If you find GEMSEC useful in your research, please consider citing the following paper:
