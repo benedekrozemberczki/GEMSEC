@@ -65,7 +65,7 @@ def overlap_generator(args, graph):
     print(" ")
     edges = nx.edges(graph)
     weights = {edge: overlap_weighter(graph, edge[0], edge[1]) for edge in tqdm(edges)}
-    weights_prime = {(edge[1],edge[0]): value for edge, value in weights.iteritems()}
+    weights_prime = {(edge[1],edge[0]): value for edge, value in weights.items()}
     weights.update(weights_prime)
     print(" ")
     return weights
@@ -77,7 +77,7 @@ def index_generation(weights, a_random_walk):
     edges = [(a_random_walk[i], a_random_walk[i+1]) for i in range(0,len(a_random_walk)-1)]
     edge_set_1 = np.array(range(0,len(a_random_walk)-1))
     edge_set_2 = np.array(range(1,len(a_random_walk)))
-    overlaps = np.array(map(lambda x: weights[x] , edges)).reshape((-1,1))
+    overlaps = np.array(list(map(lambda x: weights[x] , edges))).reshape((-1,1))
     return edge_set_1, edge_set_2, overlaps
 
 def batch_input_generator(a_random_walk, random_walk_length, window_size):
@@ -112,7 +112,7 @@ def neural_modularity_calculator(graph, embedding, means):
         positions = means-embedding[node,:]
         values = np.sum(np.square(positions),axis=1)
         index = np.argmin(values)
-        assignments[node]= index
+        assignments[int(node)]= int(index)
     modularity = community.modularity(assignments,graph)
     return modularity, assignments
 
@@ -121,7 +121,7 @@ def classical_modularity_calculator(graph, embedding, args):
     Function to calculate the DeepWalk cluster centers and assignments.
     """    
     kmeans = KMeans(n_clusters=args.cluster_number, random_state=0, n_init = 1).fit(embedding)
-    assignments = {i: int(kmeans.labels_[i]) for i in range(0, embedding.shape[0])}
+    assignments = {str(i): int(kmeans.labels_[i]) for i in range(0, embedding.shape[0])}
     modularity = community.modularity(assignments,graph)
     return modularity, assignments
 

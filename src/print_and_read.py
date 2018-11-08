@@ -57,15 +57,15 @@ def tab_printer(log):
     """    
     t = Texttable() 
     t.add_rows([['Epoch', log["losses"][-1][0]]])
-    print t.draw()
+    print(t.draw())
 
     t = Texttable()
     t.add_rows([['Loss', round(log["losses"][-1][1],3)]])
-    print t.draw() 
+    print(t.draw()) 
 
     t = Texttable()
     t.add_rows([['Modularity', round(log["cluster_quality"][-1][1],3)]])
-    print t.draw()   
+    print(t.draw()) 
 
 def epoch_printer(repetition):
     """
@@ -80,7 +80,7 @@ def log_updater(log, repetition, average_loss, optimization_time, modularity_sco
     Function to update the log object.
     """    
     index = repetition + 1
-    log["losses"] = log["losses"] + [[index, average_loss]]
-    log["times"] = log["times"] + [[index, optimization_time]]
-    log["cluster_quality"] = log["cluster_quality"] + [[index, modularity_score]]
+    log["losses"] = log["losses"] + [[int(index), float(average_loss)]]
+    log["times"] = log["times"] + [[int(index), float(optimization_time)]]
+    log["cluster_quality"] = log["cluster_quality"] + [[int(index), float(modularity_score)]]
     return log
