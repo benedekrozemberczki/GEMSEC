@@ -44,7 +44,7 @@ networkx          1.11
 tqdm              4.19.5
 numpy             1.13.3
 pandas            0.20.3
-tensorflow-gpu    1.3.0
+tensorflow-gpu    1.12.0
 jsonschema        2.6.0
 texttable         1.5.1
 python-louvain    0.11
