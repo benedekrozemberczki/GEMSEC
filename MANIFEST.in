@@ -1,0 +1,9 @@
+graft src
+graft tests
+
+prune data
+prune output
+
+global-exclude *.py[cod] __pycache__ *.so *.dylib .DS_Store *.gpickle *.jpeg
+
+include *.md *.yml *.ini .coveragerc .flake8 LICENSE

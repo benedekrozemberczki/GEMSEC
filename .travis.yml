@@ -1,0 +1,27 @@
+sudo: false
+cache: pip
+language: python
+python:
+- 3.5
+- 3.6
+- 3.7
+stages:
+  - lint
+  - test
+jobs:
+  include:
+    # lint stage
+    - stage: lint
+      env: TOXENV=manifest
+    - env: TOXENV=flake8
+    - env: TOXENV=pyroma
+    - env: TOXENV=xenon
+matrix:
+  allow_failures:
+    - env: TOXENV=flake8
+install:
+  - sh -c 'if [ "$TOXENV" = "py" ]; then pip install tox codecov; else pip install tox; fi'
+script:
+  - tox
+after_success:
+    - sh -c 'if [ "$TOXENV" = "py" ]; then tox -e coverage-report; codecov; fi'

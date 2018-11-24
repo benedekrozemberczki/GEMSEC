@@ -1,0 +1,29 @@
+#########################
+# Flake8 Configuration  #
+# (.flake8)             #
+#########################
+[flake8]
+# flake8
+exclude =
+    *.egg-info,
+    *.pyc,
+    .cache,
+    .eggs
+    .git,
+    .tox,
+    __pycache__,
+    build,
+    dist,
+format = ${cyan}%(path)s${reset}:${yellow_bold}%(row)d${reset}:${green_bold}%(col)d${reset}: ${red_bold}%(code)s${reset} %(text)s
+ignore =
+    S101
+max-line-length = 120
+
+# flake8-import-order
+application-import-names =
+    gemsec
+    tests
+import-order-style = pycharm
+
+# mccabe
+max-complexity = 10
