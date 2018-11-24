@@ -1,6 +1,4 @@
 import random
-import numpy as np
-import math
 import time
 
 import networkx as nx
@@ -8,12 +6,14 @@ import tensorflow as tf
 
 from tqdm import tqdm
 
-from layers import DeepWalker, Clustering, Regularization
-
-from calculation_helper import gamma_incrementer, RandomWalker,SecondOrderRandomWalker, index_generation, batch_input_generator, batch_label_generator
-from calculation_helper import overlap_generator
-from calculation_helper import neural_modularity_calculator, classical_modularity_calculator
-from print_and_read import json_dumper, log_setup, initiate_dump_gemsec, initiate_dump_dw, tab_printer, epoch_printer, log_updater
+from gemsec.calculation_helper import (
+    gamma_incrementer, RandomWalker, SecondOrderRandomWalker, index_generation, batch_input_generator,
+    batch_label_generator, overlap_generator, neural_modularity_calculator, classical_modularity_calculator
+)
+from gemsec.layers import DeepWalker, Clustering, Regularization
+from gemsec.print_and_read import (
+    log_setup, initiate_dump_gemsec, initiate_dump_dw, tab_printer, epoch_printer, log_updater
+)
 
 class Model(object):
     """

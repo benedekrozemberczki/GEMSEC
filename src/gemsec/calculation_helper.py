@@ -1,7 +1,6 @@
 import networkx as nx
 import numpy as np
 import random
-import math
 import community
 from collections import Counter
 from tqdm import tqdm
