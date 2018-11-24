@@ -17,9 +17,9 @@ def create_and_run_model(args):
         model = DeepWalk(args, graph)
     model.train()
 
-if __name__ == "__main__":
+def main():
     args = parameter_parser()
     create_and_run_model(args)
 
-
-
+if __name__ == "__main__":
+    main()
