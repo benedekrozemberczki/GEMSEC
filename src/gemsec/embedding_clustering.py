@@ -1,6 +1,6 @@
-from parser import parameter_parser
-from print_and_read import graph_reader
-from model import GEMSECWithRegularization, GEMSEC, DeepWalkWithRegularization, DeepWalk
+from gemsec.parser import parameter_parser
+from gemsec.print_and_read import graph_reader
+from gemsec.model import GEMSECWithRegularization, GEMSEC, DeepWalkWithRegularization, DeepWalk
 
 def create_and_run_model(args):
     """
@@ -17,9 +17,9 @@ def create_and_run_model(args):
         model = DeepWalk(args, graph)
     model.train()
 
-if __name__ == "__main__":
+def main():
     args = parameter_parser()
     create_and_run_model(args)
 
-
-
+if __name__ == "__main__":
+    main()
