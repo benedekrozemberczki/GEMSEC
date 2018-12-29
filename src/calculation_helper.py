@@ -30,7 +30,7 @@ def overlap(g, node_1, node_2):
 
 def unit(g, node_1, node_2):
     """
-    Function to calculate the 'unit' weight.
+    Function to calculate the "unit" weight.
     :param g: NX graph.
     :param node_1: Node 1. of a pair.
     :param node_2: Node 2. of a pair.    
@@ -181,8 +181,8 @@ class SecondOrderRandomWalker:
         self.nodes = nx.nodes(self.G)
         print("Edge weighting.\n")
         for edge in tqdm(self.G.edges()):
-            self.G[edge[0]][edge[1]]['weight'] = 1.0
-            self.G[edge[1]][edge[0]]['weight'] = 1.0
+            self.G[edge[0]][edge[1]]["weight"] = 1.0
+            self.G[edge[1]][edge[0]]["weight"] = 1.0
         self.is_directed = is_directed
         self.p = p
         self.q = q
@@ -249,11 +249,11 @@ class SecondOrderRandomWalker:
         unnormalized_probs = []
         for dst_nbr in sorted(G.neighbors(dst)):
             if dst_nbr == src:
-                unnormalized_probs.append(G[dst][dst_nbr]['weight']/p)
+                unnormalized_probs.append(G[dst][dst_nbr]["weight"]/p)
             elif G.has_edge(dst_nbr, src):
-                unnormalized_probs.append(G[dst][dst_nbr]['weight'])
+                unnormalized_probs.append(G[dst][dst_nbr]["weight"])
             else:
-                unnormalized_probs.append(G[dst][dst_nbr]['weight']/q)
+                unnormalized_probs.append(G[dst][dst_nbr]["weight"]/q)
         norm_const = sum(unnormalized_probs)
         normalized_probs =  [float(u_prob)/norm_const for u_prob in unnormalized_probs]
 
@@ -270,7 +270,7 @@ class SecondOrderRandomWalker:
         print("")
         print("Preprocesing.\n")
         for node in tqdm(G.nodes()):
-             unnormalized_probs = [G[node][nbr]['weight'] for nbr in sorted(G.neighbors(node))]
+             unnormalized_probs = [G[node][nbr]["weight"] for nbr in sorted(G.neighbors(node))]
              norm_const = sum(unnormalized_probs)
              normalized_probs =  [float(u_prob)/norm_const for u_prob in unnormalized_probs]
              alias_nodes[node] = alias_setup(normalized_probs)
