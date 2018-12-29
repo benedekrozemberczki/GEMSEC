@@ -146,7 +146,3 @@ Creating a clustered embedding of the default dataset in 32 dimensions, 20 seque
 ```
 python src/embedding_clustering.py --dimensions 32 --num-of-walks 20 --random-walk-length 160 --cluster-number 10
 ```
-
-### Related papers
-
-
