@@ -121,7 +121,7 @@ def classical_modularity_calculator(graph, embedding, args):
     Function to calculate the DeepWalk cluster centers and assignments.
     """    
     kmeans = KMeans(n_clusters=args.cluster_number, random_state=0, n_init = 1).fit(embedding)
-    assignments = {str(i): int(kmeans.labels_[i]) for i in range(0, embedding.shape[0])}
+    assignments = {i: int(kmeans.labels_[i]) for i in range(0, embedding.shape[0])}
     modularity = community.modularity(assignments,graph)
     return modularity, assignments
 
