@@ -13,7 +13,7 @@ This repository provides a reference implementation for GEMSEC as described in t
 > GEMSEC: Graph Embedding with Self Clustering.
 > [Benedek Rozemberczki](http://homepages.inf.ed.ac.uk/s1668259/), [Ryan Davies](https://www.inf.ed.ac.uk/people/students/Ryan_Davies.html), [Rik Sarkar](https://homepages.inf.ed.ac.uk/rsarkar/) and [Charles Sutton](http://homepages.inf.ed.ac.uk/csutton/) .
 > arXiv, 2018.
->https://arxiv.org/abs/1802.03997
+> https://arxiv.org/abs/1802.03997
 
 ### Table of Contents
 
@@ -22,8 +22,7 @@ This repository provides a reference implementation for GEMSEC as described in t
 3. [Datasets](#datasets)  
 4. [Logging](#logging)  
 5. [Options](#options) 
-6. [Examples](#examples)  
-7. [Related Papers](#related-papers)  
+6. [Examples](#examples)
 
 ### Citing
 
