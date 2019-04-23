@@ -132,7 +132,7 @@ class GEMSECWithRegularization(Model):
 
                 for node in tqdm(self.nodes):
                     self.current_step = self.current_step + 1
-                    self.current_gamma = gamma_incrementer(self.current_step, self.args.initial_gamma, self.current_gamma, self.true_step_size)
+                    self.current_gamma = gamma_incrementer(self.current_step, self.args.initial_gamma, self.args.final_gamma, self.current_gamma, self.true_step_size)
                     feed_dict = self.feed_dict_generator(self.walks[self.current_step-1], self.current_step, self.current_gamma)
                     start = time.time()
                     _, loss = session.run([self.train_op , self.loss], feed_dict=feed_dict)

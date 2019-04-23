@@ -96,10 +96,10 @@ def batch_label_generator(a_random_walk, random_walk_length, window_size):
     grams_2 = [a_random_walk[j-window_size:j] for j in range(window_size,random_walk_length)]
     return np.array(grams_1 + grams_2)
 
-def gamma_incrementer(step, gamma_0, current_gamma, num_steps):
-    if step >1:
+def gamma_incrementer(step, gamma_0, gamma_final, current_gamma, num_steps):
+    if step > 1:
         exponent = (0-np.log10(gamma_0))/float(num_steps)
-        current_gamma = current_gamma * (10 **exponent)
+        current_gamma = current_gamma * (10 **exponent)*(gamma_final-gamma_0)+gamma_0
     return current_gamma
 
 

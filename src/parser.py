@@ -126,6 +126,11 @@ def parameter_parser():
                         default = 0.1,
 	                help = "Initial clustering weight. Default is 0.1.")
 
+    parser.add_argument("--final-gamma",
+                        type = float,
+                        default = 0.5,
+	                help = "Final clustering weight. Default is 0.2.")
+
     parser.add_argument("--lambd",
                         type = float,
                         default = 2.0**-4,
