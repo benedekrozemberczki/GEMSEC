@@ -1,6 +1,6 @@
 Graph Embedding with Self Clustering
 	<img src="https://img.shields.io/badge/stars-60+-blue.svg"/>
-        <img src="https://img.shields.io/badge/forks-5+-blue.svg"/>
+        <img src="https://img.shields.io/badge/forks-10+-blue.svg"/>
 	<img src="https://img.shields.io/badge/license-MIT-blue.svg"/>
 ============================================
 <p align="justify">
