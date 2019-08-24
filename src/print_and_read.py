@@ -1,7 +1,7 @@
+import json
 import pandas as pd
 import networkx as nx
 from texttable import Texttable
-import json
 
 def graph_reader(input_path):
     """
