@@ -1,10 +1,10 @@
-import networkx as nx
-import numpy as np
-import random
 import math
+import random
 import community
-from collections import Counter
+import numpy as np
+import networkx as nx
 from tqdm import tqdm
+from collections import Counter
 from sklearn.cluster import KMeans
 
 def normalized_overlap(g, node_1, node_2):
