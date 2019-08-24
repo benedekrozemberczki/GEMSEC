@@ -1,6 +1,6 @@
-import tensorflow as tf
 import math
 import numpy as np
+import tensorflow as tf
 
 class DeepWalker:
     """
@@ -15,7 +15,6 @@ class DeepWalker:
         self.vocab_size = vocab_size 
         self.degrees = degrees
         self.train_labels = tf.placeholder(tf.int64, shape=[None, self.args.window_size])
-
 
         self.train_inputs = tf.placeholder(tf.int64, shape=[None])
     
