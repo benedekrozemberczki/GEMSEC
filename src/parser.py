@@ -7,10 +7,6 @@ def parameter_parser():
     """
     parser = argparse.ArgumentParser(description = "Run GEMSEC.")
 
-    #------------------------------------------------------------------
-    # Input and output file parameters.
-    #------------------------------------------------------------------
-
     parser.add_argument("--input",
                         nargs = "?",
                         default = "./data/politician_edges.csv",
@@ -46,10 +42,6 @@ def parameter_parser():
                         default = "GEMSECWithRegularization",
 	                help = "The model type.")
 
-    #------------------------------------------------------------------
-    # RandomWalk parameters.
-    #------------------------------------------------------------------
-
     parser.add_argument("--P",
                         type = float,
                         default = 1,
@@ -64,11 +56,6 @@ def parameter_parser():
                         nargs = "?",
                         default = "first",
 	                help = "Random walker order. Default is first.")
-
-
-    #------------------------------------------------------------------
-    # Skipgram parameters.
-    #------------------------------------------------------------------
 
     parser.add_argument("--dimensions",
                         type = int,
@@ -99,10 +86,6 @@ def parameter_parser():
                         type = int,
                         default = 10,
 	                help = "Number of negative samples to draw. Default is 10.")
-
-    #------------------------------------------------------------------
-    # Optimization parameters.
-    #------------------------------------------------------------------
 
     parser.add_argument("--initial-learning-rate",
                         type = float,
