@@ -20,6 +20,3 @@ def create_and_run_model(args):
 if __name__ == "__main__":
     args = parameter_parser()
     create_and_run_model(args)
-
-
-
