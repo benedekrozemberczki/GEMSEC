@@ -30,13 +30,13 @@ This repository provides a reference implementation for GEMSEC as described in t
 If you find GEMSEC useful in your research, please consider citing the following paper:
 
 >@inproceedings{rozemberczki2019gemsec,  
-               title={GEMSEC: Graph Embedding with Self Clustering},  
-               author={Rozemberczki, Benedek and Davies, Ryan and Sarkar, Rik and Sutton, Charles},  
-               booktitle={Proceedings of the 2019 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining 2019},  
-               pages={65-72},  
-               year={2019},  
-               organization={ACM}  
-               }
+                title={GEMSEC: Graph Embedding with Self Clustering},  
+                author={Rozemberczki, Benedek and Davies, Ryan and Sarkar, Rik and Sutton, Charles},  
+                booktitle={Proceedings of the 2019 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining 2019},  
+                pages={65-72},  
+                year={2019},  
+                organization={ACM}  
+                }
 
 
 ### Requirements
