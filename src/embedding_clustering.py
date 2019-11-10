@@ -1,6 +1,9 @@
-from parser import parameter_parser
+"""Running the model."""
+
+from param_parser import parameter_parser
 from print_and_read import graph_reader
-from model import GEMSECWithRegularization, GEMSEC, DeepWalkWithRegularization, DeepWalk
+from model import GEMSECWithRegularization, GEMSEC
+from model import DeepWalkWithRegularization, DeepWalk
 
 def create_and_run_model(args):
     """
