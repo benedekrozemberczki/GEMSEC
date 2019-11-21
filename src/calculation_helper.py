@@ -311,10 +311,10 @@ def alias_setup(probs):
 
     for kk, prob in enumerate(probs):
         q[kk] = K*prob
-    if q[kk] < 1.0:
-        smaller.append(kk)
-    else:
-        larger.append(kk)
+        if q[kk] < 1.0:
+            smaller.append(kk)
+        else:
+            larger.append(kk)
 
     while len(smaller) > 0 and len(larger) > 0:
         small = smaller.pop()
