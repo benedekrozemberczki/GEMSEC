@@ -39,7 +39,7 @@ class Model(object):
             self.walker.preprocess_transition_probs()
             self.walks, self.degrees = self.walker.simulate_walks(self.args.num_of_walks,
                                                                   self.args.random_walk_length)
-        self.nodes = self.graph.nodes()
+        self.nodes = [node for node in self.graph.nodes()]
         del self.walker
         self.vocab_size = len(self.degrees)
         self.true_step_size = self.args.num_of_walks*self.vocab_size
