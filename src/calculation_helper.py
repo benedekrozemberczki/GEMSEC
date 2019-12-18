@@ -127,7 +127,7 @@ def classical_modularity_calculator(graph, embedding, args):
     Function to calculate the DeepWalk cluster centers and assignments.
     """
     kmeans = KMeans(n_clusters=args.cluster_number, random_state=0, n_init=1).fit(embedding)
-    assignments = {i: int(kmeans.labels_[i]) for i in range(0, embedding.shape[0])}
+    assignments = {i: int(kmeans.labels_[i]) for i in range(embedding.shape[0])}
     modularity = community.modularity(assignments, graph)
     return modularity, assignments
 
@@ -135,10 +135,10 @@ class RandomWalker:
     """
     Class to generate vertex sequences.
     """
-    def __init__(self, graph, nodes, repetitions, length):
+    def __init__(self, graph, repetitions, length):
         print("Model initialization started.")
         self.graph = graph
-        self.nodes = nodes
+        self.nodes = [node for node in self.graph.nodes()]
         self.repetitions = repetitions
         self.length = length
 
@@ -149,9 +149,9 @@ class RandomWalker:
         walk = [start_node]
         while len(walk) != self.length:
             end_point = walk[-1]
-            neighbors = nx.neighbors(self.graph, end_point)
+            neighbors = [neb for neb in nx.neighbors(self.graph, end_point)]
             if len(neighbors) > 0:
-                walk = walk + random.sample(neighbors, 1)
+                walk.append(random.choice(neighbors))
             else:
                 break
         return walk
@@ -162,7 +162,7 @@ class RandomWalker:
         """
         raw_counts = [node for walk in self.walks for node in walk]
         counts = Counter(raw_counts)
-        self.degrees = [counts[i] for i in range(0, len(self.nodes))]
+        self.degrees = [counts[i] for i in range(len(self.nodes))]
 
     def do_walks(self):
         """

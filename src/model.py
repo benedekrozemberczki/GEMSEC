@@ -29,7 +29,7 @@ class Model(object):
         self.args = args
         self.graph = graph
         if self.args.walker == "first":
-            self.walker = RandomWalker(self.graph, nx.nodes(graph),
+            self.walker = RandomWalker(self.graph,
                                        self.args.num_of_walks,
                                        self.args.random_walk_length)
 
