@@ -28,7 +28,7 @@ This repository provides a reference implementation for GEMSEC as described in t
 ### Citing
 
 If you find GEMSEC useful in your research, please consider citing the following paper:
-
+```
 >@inproceedings{rozemberczki2019gemsec,    
                 title={GEMSEC: Graph Embedding with Self Clustering},    
                 author={Rozemberczki, Benedek and Davies, Ryan and Sarkar, Rik and Sutton, Charles},    
@@ -37,8 +37,7 @@ If you find GEMSEC useful in your research, please consider citing the following
                 year={2019},    
                 organization={ACM}    
                 }
-
-
+```
 ### Requirements
 
 The codebase is implemented in Python 3.5.2 | Anaconda 4.2.0 (64-bit). Package versions used for development are just below.
