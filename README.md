@@ -28,7 +28,7 @@ This repository provides a reference implementation for GEMSEC as described in t
 ### Citing
 
 If you find GEMSEC useful in your research, please consider citing the following paper:
-```
+```bibtex
 >@inproceedings{rozemberczki2019gemsec,    
                 title={GEMSEC: Graph Embedding with Self Clustering},    
                 author={Rozemberczki, Benedek and Davies, Ryan and Sarkar, Rik and Sutton, Charles},    
