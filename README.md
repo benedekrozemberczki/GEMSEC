@@ -20,6 +20,8 @@ This repository provides a reference implementation for GEMSEC as described in t
 > ASONAM, 2019.
 > https://arxiv.org/abs/1802.03997
 
+The datasets are also available on [SNAP](http://snap.stanford.edu/).
+
 ### Table of Contents
 
 1. [Citing](#citing)  
