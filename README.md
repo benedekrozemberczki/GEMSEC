@@ -1,7 +1,5 @@
 Graph Embedding with Self Clustering
 ============================================
-![GitHub stars](https://img.shields.io/github/stars/benedekrozemberczki/GEMSEC.svg?style=plastic)
-![GitHub forks](https://img.shields.io/github/forks/benedekrozemberczki/GEMSEC.svg?color=blue&style=plastic)
 ![License](https://img.shields.io/github/license/benedekrozemberczki/GEMSEC.svg?color=blue&style=plastic)
 [![Arxiv](https://img.shields.io/badge/ArXiv-1802.03997-orange.svg?color=blue&style=plastic)](https://arxiv.org/abs/1802.03997)
 
