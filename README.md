@@ -1,6 +1,5 @@
 Graph Embedding with Self Clustering
 ============================================
-![License](https://img.shields.io/github/license/benedekrozemberczki/GEMSEC.svg?color=blue&style=plastic)
 [![Arxiv](https://img.shields.io/badge/ArXiv-1802.03997-orange.svg?color=blue&style=plastic)](https://arxiv.org/abs/1802.03997) [![codebeat badge](https://codebeat.co/badges/131566a3-178c-4b98-aaad-40499bff9598)](https://codebeat.co/projects/github-com-benedekrozemberczki-gemsec-master)
 [![repo size](https://img.shields.io/github/repo-size/benedekrozemberczki/GEMSEC.svg)](https://github.com/benedekrozemberczki/GEMSEC/archive/master.zip)
 <p align="justify">
@@ -155,3 +154,8 @@ Creating a clustered embedding of the default dataset in 32 dimensions, 20 seque
 ```sh
 $ python src/embedding_clustering.py --dimensions 32 --num-of-walks 20 --random-walk-length 160 --cluster-number 10
 ```
+--------------------------------------------------------------------------------
+
+**License**
+
+- [GNU](https://github.com/benedekrozemberczki/GEMSEC/blob/master/LICENSE)
