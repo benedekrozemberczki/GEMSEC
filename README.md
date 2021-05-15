@@ -159,3 +159,6 @@ $ python src/embedding_clustering.py --dimensions 32 --num-of-walks 20 --random-
 **License**
 
 - [GNU](https://github.com/benedekrozemberczki/GEMSEC/blob/master/LICENSE)
+
+
+--------------------------------------------------------------------------------
