@@ -13,7 +13,7 @@ The second-order random walks sampling methods were taken from the reference imp
   <img width="700" src="gemsec.jpeg">
 </p>
 
-------------------------------------------------
+----------------------------------
 
 This repository provides a reference implementation for GEMSEC as described in the paper:
 > GEMSEC: Graph Embedding with Self Clustering.
