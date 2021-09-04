@@ -1,5 +1,5 @@
 Graph Embedding with Self Clustering
-============================================
+================================
 [![Arxiv](https://img.shields.io/badge/ArXiv-1802.03997-orange.svg)](https://arxiv.org/abs/1802.03997) [![codebeat badge](https://codebeat.co/badges/131566a3-178c-4b98-aaad-40499bff9598)](https://codebeat.co/projects/github-com-benedekrozemberczki-gemsec-master)
 [![repo size](https://img.shields.io/github/repo-size/benedekrozemberczki/GEMSEC.svg)](https://github.com/benedekrozemberczki/GEMSEC/archive/master.zip)⠀[![benedekrozemberczki](https://img.shields.io/twitter/follow/benrozemberczki?style=social&logo=twitter)](https://twitter.com/intent/follow?screen_name=benrozemberczki)⠀
 <p align="justify">
@@ -13,7 +13,7 @@ The second-order random walks sampling methods were taken from the reference imp
   <img width="700" src="gemsec.jpeg">
 </p>
 
-----------------------------------
+------------------------
 
 This repository provides a reference implementation for GEMSEC as described in the paper:
 > GEMSEC: Graph Embedding with Self Clustering.
